@@ -1,0 +1,49 @@
+// Sass / maps
+// ----------------------------------------------------------
+
+$font-size: (
+  'small': (12, 14),
+  'medium': (14, 16),
+  'bigger': (30, 60)
+);
+
+$colors: (
+  'white': #FFF,
+  'black': #000,
+  'gray-light': #949494,
+  'gray-dark': #3D3D3D,
+  'yellow': #E2F40F
+);
+
+$spaces: (
+  'xxs',
+  'xs',
+  's',
+  'm',
+  'l',
+  'xl',
+  'xxl'
+);
+
+// Static Custom Properties
+// ----------------------------------------------------------
+
+:root {
+  --base-font-size: 62.5%;
+  --base-space: 0.8;
+  --font-default: 'Poppins', sans-serif;
+  --grid-columns: 4;
+  --grid-columns-gap: 2rem;
+
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  @for $i from 1 through length($spaces) {
+    --spaces-#{nth($spaces, $i)}: calc(var(--base-space) * #{$i}rem);
+  }
+
+  @media screen and (min-width: 768px) {
+    --grid-columns: 12;
+  }
+}
