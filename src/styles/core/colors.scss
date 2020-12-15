@@ -1,0 +1,13 @@
+.color {
+  --color: var(--color-black);
+  color: var(--color);
+}
+
+// Generate the color class dynamically
+// ----------------------------------------------------------
+
+@each $name, $value in $colors {
+  .color--#{$name} {
+    --color: #{$value};
+  }
+}

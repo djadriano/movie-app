@@ -1,0 +1,18 @@
+@import 'styles/core/variables';
+
+.content {
+  position: absolute;
+  top: 70%;
+  left: 0;
+  width: 100%;
+  background: var(--color-black);
+  padding: var(--spaces-m);
+
+  @media screen and (min-width: $mq-laptop) {
+    position: relative;
+    width: 60%;
+    top: 0;
+    padding: var(--spaces-l);
+    overflow-y: auto;
+  }
+}
