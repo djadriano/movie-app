@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import './ContentHeader.scss';
 
 const ContentHeader = ({
-  title, subtitle, rating, bottomText, description, image,
+  title,
+  subtitle,
+  rating,
+  bottomText,
+  description,
+  image,
 }) => (
   <>
     <header className="content-header color color--white">

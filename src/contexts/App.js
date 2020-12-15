@@ -7,7 +7,9 @@ const AppProvider = ({ id, children }) => {
   const [show, setShow] = useState(null);
 
   useEffect(async () => {
-    const request = await fetch(`http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=episodes`);
+    const request = await fetch(
+      `http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=episodes`,
+    );
 
     try {
       const response = await request.json();
@@ -46,7 +48,10 @@ AppProvider.defaultProps = {
 
 AppProvider.propTypes = {
   id: PropTypes.number,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 export { AppContext, AppProvider };
