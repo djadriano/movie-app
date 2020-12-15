@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { SHOW_ID } from '../utils/constants';
 
 const AppContext = createContext();
 
@@ -45,7 +46,7 @@ const AppProvider = ({ showId, children }) => {
 
 AppProvider.defaultProps = {
   children: PropTypes.node,
-  showId: 6771,
+  showId: SHOW_ID,
 };
 
 AppProvider.propTypes = {
