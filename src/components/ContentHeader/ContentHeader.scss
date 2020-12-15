@@ -8,4 +8,10 @@
       margin-top: var(--spaces-xxl);
     }
   }
+
+  &__image {
+    width: auto;
+    height: auto;
+    margin-top: var(--spaces-l);
+  }
 }

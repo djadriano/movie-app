@@ -1,9 +1,10 @@
+/* eslint-disable react/no-danger */
 import PropTypes from 'prop-types';
 
 import './ContentHeader.scss';
 
 const ContentHeader = ({
-  title, subtitle, rating, bottomText, description,
+  title, subtitle, rating, bottomText, description, image,
 }) => (
   <>
     <header className="content-header color color--white">
@@ -14,7 +15,15 @@ const ContentHeader = ({
         <b>{bottomText}</b>
       </p>
     </header>
-    <p className="content-header__description fs fs--medium color color--white">{description}</p>
+
+    {image && <img src={image} alt="" className="content-header__image" />}
+
+    <p
+      className="content-header__description fs fs--medium color color--white"
+      dangerouslySetInnerHTML={{
+        __html: description,
+      }}
+    />
   </>
 );
 
@@ -23,6 +32,7 @@ ContentHeader.defaultProps = {
   rating: '',
   bottomText: '',
   description: '',
+  image: '',
 };
 
 ContentHeader.propTypes = {
@@ -31,6 +41,7 @@ ContentHeader.propTypes = {
   rating: PropTypes.string,
   bottomText: PropTypes.string,
   description: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default ContentHeader;
