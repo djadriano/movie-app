@@ -1,0 +1,14 @@
+@import 'styles/core/variables';
+
+.show-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  @media screen and (min-width: $mq-laptop) {
+    position: relative;
+    width: 40%;
+  }
+}

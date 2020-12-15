@@ -1,0 +1,55 @@
+@import 'styles/core/variables';
+
+.episodes-season {
+  $self: &;
+
+  &__title {
+    position: sticky;
+    top: 0;
+    background: var(--color-gray-dark);
+    padding: var(--spaces-xs);
+
+    @media screen and (min-width: $mq-laptop) {
+      top: calc(-1 * var(--spaces-l));
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: var(--spaces-m) 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-bottom: var(--spaces-xs);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: flex;
+    color: var(--color-white);
+  }
+
+  &__counter {
+    background: var(--color-white);
+    color: var(--color-black);
+    width: 5rem;
+    height: 5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  &__description {
+    margin-left: var(--spaces-xs);
+    flex: 0 1 auto;
+
+    #{$self}__link:hover & {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.episodes {
+  margin-top: var(--spaces-m);
+  padding: var(--spaces-m) 0;
+  border-top: 1px solid var(--color-gray-light);
+
+  &__title {
+    margin-bottom: var(--spaces-m);
+  }
+}

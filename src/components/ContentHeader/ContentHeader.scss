@@ -1,0 +1,11 @@
+@import 'styles/core/variables';
+
+.content-header {
+  &__description {
+    margin-top: var(--spaces-l);
+
+    @media screen and (min-width: $mq-laptop) {
+      margin-top: var(--spaces-xxl);
+    }
+  }
+}
