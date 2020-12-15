@@ -1,17 +1,22 @@
-import PropTypes from 'prop-types';
 import EpisodesSeason from '../EpisodesSeason/EpisodesSeason';
+import useShow from '../../hooks/useShow';
 
 import './Episodes.scss';
 
-const Episodes = ({ seasons }) => (
-  <section className="episodes">
-    <h1 className="episodes__title fs fs--big title color color--white">Episodes</h1>
-    {seasons.map((season) => <EpisodesSeason season={season.number} key={season.number} />)}
-  </section>
-);
+const Episodes = () => {
+  const { getSeasons } = useShow();
 
-Episodes.propTypes = {
-  seasons: PropTypes.arrayOf(PropTypes.object).isRequired,
+  return (
+    <section className="episodes">
+      <h1 className="episodes__title fs fs--big title color color--white">
+        Episodes
+      </h1>
+
+      {getSeasons().map(({ number }) => (
+        <EpisodesSeason season={number} key={number} />
+      ))}
+    </section>
+  );
 };
 
 export default Episodes;

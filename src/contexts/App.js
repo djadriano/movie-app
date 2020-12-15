@@ -3,37 +3,41 @@ import PropTypes from 'prop-types';
 
 const AppContext = createContext();
 
-const AppProvider = ({ id, children }) => {
+const AppProvider = ({ showId, children }) => {
   const [show, setShow] = useState(null);
 
-  useEffect(async () => {
-    const request = await fetch(`http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=episodes`);
+  async function fetchShow() {
+    const request = await fetch(
+      `http://api.tvmaze.com/shows/${showId}?embed[]=seasons&embed[]=episodes`,
+    );
 
     try {
       const response = await request.json();
+      const {
+        id, name, genres, rating, image, summary,
+      } = response;
 
       setShow({
-        id: response.id,
-        name: response.name,
-        genres: response.genres.join(', '),
-        rating: response.rating.average,
-        image: response.image,
-        summary: response.summary,
+        info: {
+          id,
+          name,
+          genres: genres.join(', '),
+          rating: rating.average,
+          image,
+          summary,
+        },
         seasons: response['_embedded'].seasons,
         episodes: response['_embedded'].episodes,
       });
     } catch (error) {
       throw new Error(error);
     }
-  }, []);
+  }
 
-  const getEpisode = (episodeId) => {
-    const { episodes } = show;
-    return episodes.filter((episode) => episode.id === episodeId)[0];
-  };
+  useEffect(fetchShow, []);
 
   return (
-    <AppContext.Provider value={{ show, getEpisode }}>
+    <AppContext.Provider value={{ show }}>
       {children}
     </AppContext.Provider>
   );
@@ -41,12 +45,15 @@ const AppProvider = ({ id, children }) => {
 
 AppProvider.defaultProps = {
   children: PropTypes.node,
-  id: 6771,
+  showId: 6771,
 };
 
 AppProvider.propTypes = {
-  id: PropTypes.number,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+  showId: PropTypes.number,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 export { AppContext, AppProvider };
