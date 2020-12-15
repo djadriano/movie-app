@@ -1,31 +1,34 @@
-import {
-  useContext, useState, useEffect,
-} from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { AppContext } from '../contexts/App';
-
 import ContentHeader from '../components/ContentHeader/ContentHeader';
+import useShow from '../hooks/useShow';
+import { formatDate } from '../utils/helpers';
 
 const Episode = () => {
   const { slug } = useParams();
-  const { show, getEpisode } = useContext(AppContext);
-  const [episode, setEpisode] = useState(null);
+  const { show, getEpisode } = useShow();
+
+  if (!show) return null;
+
+  const episode = getEpisode(Number(slug));
+
+  if (!episode) return null;
+
+  const {
+    name, season, number, summary, image, airdate,
+  } = episode;
 
   useEffect(() => {
-    if (show) {
-      setEpisode(getEpisode(Number(slug)));
-    }
-  }, [show]);
-
-  if (!show || !episode) return null;
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <ContentHeader
-      title={episode.name}
-      subtitle="Usa, 2016"
-      bottomText={`Season ${episode.season}, Episode ${episode.number}`}
-      description={episode.summary}
-      image={episode.image ? episode.image.medium : ''}
+      title={name}
+      subtitle={formatDate(airdate)}
+      bottomText={`Season ${season}, Episode ${number}`}
+      description={summary}
+      image={image ? image.medium : ''}
     />
   );
 };

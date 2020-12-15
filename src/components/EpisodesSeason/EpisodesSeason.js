@@ -1,12 +1,12 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AppContext } from '../../contexts/App';
+import useShow from '../../hooks/useShow';
+import { formatDate } from '../../utils/helpers';
 
 import './EpisodesSeason.scss';
 
 const EpisodesSeason = ({ season }) => {
-  const { show } = useContext(AppContext);
+  const { getEpisodesBySeason } = useShow();
 
   return (
     <div className="episodes-season">
@@ -18,8 +18,7 @@ const EpisodesSeason = ({ season }) => {
 
       <ul className="episodes-season__list color color--white">
         {
-          show.episodes
-            .filter((episode) => episode.season === season)
+          getEpisodesBySeason(season)
             .map((episode) => (
               <li className="episodes-season__item" key={episode.id}>
                 <Link to={`/episode/${episode.id}`} className="episodes-season__link">
@@ -28,7 +27,7 @@ const EpisodesSeason = ({ season }) => {
                     <h3 className="fs fs--medium">
                       <b>{episode.name}</b>
                     </h3>
-                    <time className="fs fs--small">{episode.airdate}</time>
+                    {episode.airdate && <time className="fs fs--small">{formatDate(episode.airdate)}</time>}
                   </div>
                 </Link>
               </li>

@@ -1,11 +1,9 @@
-import { useContext } from 'react';
-import { AppContext } from '../contexts/App';
-
 import ContentHeader from '../components/ContentHeader/ContentHeader';
 import Episodes from '../components/Episodes/Episodes';
+import useShow from '../hooks/useShow';
 
 const Home = () => {
-  const { show } = useContext(AppContext);
+  const { show } = useShow();
 
   if (!show) return null;
 

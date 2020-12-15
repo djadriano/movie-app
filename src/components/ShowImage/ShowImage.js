@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { AppContext } from '../../contexts/App';
+import useShow from '../../hooks/useShow';
 
 import './ShowImage.scss';
 
 const ShowImage = () => {
-  const { show } = useContext(AppContext);
+  const { show } = useShow();
 
   if (!show) return null;
 
