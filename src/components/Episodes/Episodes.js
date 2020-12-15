@@ -11,6 +11,7 @@ const Episodes = () => {
       <h1 className="episodes__title fs fs--big title color color--white">
         Episodes
       </h1>
+
       {getSeasons().map(({ number }) => (
         <EpisodesSeason season={number} key={number} />
       ))}
