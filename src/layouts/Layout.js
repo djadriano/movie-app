@@ -1,22 +1,12 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import Main from '../components/Main/Main';
+import ShowImage from '../components/ShowImage/ShowImage';
+import Content from '../components/Content/Content';
 
 const Layout = () => (
-  <Router>
-    <main>
-      <Switch>
-        <Route path="/episode/:slug">
-          <h1>Episodes</h1>
-        </Route>
-        <Route path="/">
-          <h1>Home</h1>
-        </Route>
-      </Switch>
-    </main>
-  </Router>
+  <Main>
+    <ShowImage />
+    <Content />
+  </Main>
 );
 
 export default Layout;
