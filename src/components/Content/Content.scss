@@ -5,10 +5,11 @@
   top: 70%;
   left: 0;
   width: 100%;
-  background: var(--color-black);
+  background: rgba(0, 0, 0, 0.8);
   padding: var(--spaces-m);
 
   @media screen and (min-width: $mq-laptop) {
+    background: var(--color-black);
     position: relative;
     width: 60%;
     top: 0;
