@@ -4,7 +4,6 @@
   --viewport-difference: calc(100vw - (var(--min-viewport) * 0.1rem));
   --font-size-difference: calc(var(--max-font-size) - var(--min-font-size));
   --font-range-difference: calc(var(--max-viewport) - var(--min-viewport));
-  --letter-spacing: -0.06rem;
 
   --font-scale: calc(
     (var(--min-font-size) * 0.1rem) + var(--font-size-difference) *
@@ -27,4 +26,5 @@
 
 .title {
   font-family: 'Bebas Neue', cursive;
+  line-height: 1;
 }
