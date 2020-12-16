@@ -15,7 +15,7 @@ const Home = () => {
         bottomText={show.genres}
         description={show.summary}
       />
-      <Episodes seasons={show.seasons} />
+      <Episodes />
     </>
   );
 };
