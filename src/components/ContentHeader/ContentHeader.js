@@ -12,7 +12,7 @@ const ContentHeader = ({
   image,
 }) => (
   <>
-    <header className="content-header color color--white">
+    <header data-module="ContentHeader" className="content-header bg-color bg-color--black color color--white">
       <h1 className="fs fs--bigger title">{title}</h1>
       <h4 className="fs fs--small">{subtitle}</h4>
       {rating && <span className="fs fs--small">{rating}</span>}
